@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<% const itemsLeft = arrayOfItems.filter(el=> el.completed === false).length %>
+
+<h1>To-Do List</h1>
+<h2><%= itemsLeft != 1 ? `${itemsLeft} tasks` : `${itemsLeft} task` %> left to do!</h2>
+<form action="/createTodo" method="POST">
+    <input type="text" name="todoItem" placeholder="enter an item">
+    <input type="submit">
+</form>
+
+<ul>
+    <% for (let i=0; i < arrayOfItems.length; i++){ %>
+        <li class="todoItem">
+        <% if (arrayOfItems[i].completed===true) { %>
+            <span class="completed">
+                <%= arrayOfItems[i].todo %>
+            </span>
+            <% } else { %>
+            <span>
+                <%= arrayOfItems[i].todo %>
+            </span>
+            <% } %>
+            <span class="delete">✖</span>
+        </li>
+        <% } %>
+</ul>
+
+<script src="/main.js"></script>
+</body>
+</html>

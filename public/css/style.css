@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    color: magenta;
+}
+
+li {
+    font-size: 1.3em;
+    list-style-position: inside;
+    padding: 5px 20px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+
+li:nth-child(even) {
+    background:lightgoldenrodyellow;
+}
+
+li:nth-child(odd) {
+    background:lightyellow;
+}
+
+ul {
+    padding-left: 0;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: lightgray;
+}
