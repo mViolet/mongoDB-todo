@@ -51,8 +51,8 @@ app.delete('/deleteTodo', (req, res) => {
     db.collection('todos').deleteOne({todo:req.body.clickedText}) // go to database, find collection 'todos', 
     .then(result => { //when promise resolves, fire then with an argument that is the result
         console.log(req.body.deletedThisItem)
-        console.log('deleted Todo item')
-        res.json('Deleted it...') //send back to fetch
+        console.log('Deleted Todo Item')
+        res.json('Deleted Todo Item') //send back to fetch
     })
     .catch(err => console.log(err))
 })
@@ -64,9 +64,21 @@ app.put('/markComplete', (req, res)=>{
         }
     })
     .then(result => {
-        console.log('marked complete')
+        console.log('Marked complete')
         res.json('Marked complete')
     })
+})
+
+app.put('/undoComplete', (req, res) => {
+    db.collection('todos').updateOne({ todo: req.body.itemToUndo }, {
+        $set: {
+            completed: false
+        }
+    })
+        .then(result => {
+            console.log('Item marked not complete')
+            res.json('Item marked not complete')
+        })
 })
 
 app.listen(PORT, () => {

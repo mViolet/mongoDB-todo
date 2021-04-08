@@ -1,13 +1,23 @@
 const deleteBtn = document.querySelectorAll(".delete")
 const todoItem = document.querySelectorAll(".todoItem span")
+const completedItem = document.querySelectorAll(".todoItem span.completed")
+const quote = document.querySelector(".quote")
+const themes = document.querySelectorAll(".theme")
+const body = document.querySelector('body')
 
 Array.from(deleteBtn).forEach(el => {
     el.addEventListener('click', deleteTodo)
 })
 
-Array.from(todoItem).forEach(item => {
-    item.addEventListener('click', markComplete)
+Array.from(todoItem).forEach(el => {
+    el.addEventListener('click', markComplete)
 })
+
+Array.from(completedItem).forEach(el => {
+    el.addEventListener('click', undoComplete)
+})
+
+Array.from(themes).forEach(theme => theme.addEventListener('click', changeTheme))
 
 async function deleteTodo(){
     // alert("you clicked delete") //to test if the js file is working
@@ -22,7 +32,7 @@ async function deleteTodo(){
             })
         })
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         location.reload() //reload the page
     } catch(err) { console.log(error) }
 
@@ -39,7 +49,32 @@ async function markComplete(e) {
             })
         })
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         location.reload()
     } catch(err) { console.log(err) }
+}
+
+async function undoComplete(e) {
+    try {
+        const response = await fetch('undoComplete', {
+            method: 'put',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                'itemToUndo': todoText
+            })
+        })
+        const data = await response.json()
+        // console.log(data)
+        location.reload()
+    } catch (err) { console.log(err) }
+}
+
+
+function changeTheme(){
+    let text = this.textContent.split(' ')
+    let currentClass = body.classList.value
+    text = text[0].toLowerCase() + text[1]
+
+    body.classList.remove(currentClass)
+    body.classList.add(text)
 }
