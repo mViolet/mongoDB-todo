@@ -84,6 +84,6 @@ app.put('/undoComplete', (req, res) => { //another put request!! this time at /u
         }) // close then and its function that we passed in
 }) //close .put()'s callback function and closing paren for put method
 
-app.listen(PORT, () => { //OK now here is where the server is set up to listen on PORT 8000 from line 5. When it stars listening, it fires a callback function
+app.listen(process.env.PORT || PORT, () => { //OK now here is where the server is set up to listen on PORT 8000 from line 5. When it stars listening, it fires a callback function
     console.log(`Server is running, you better catch it`)  //it will fire the function, logging this to the console, which will make you laugh
 }) //close the .listen() callback function, close the .listen() method
