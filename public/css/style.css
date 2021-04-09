@@ -47,14 +47,38 @@
     --lightList: lightyellow;
     --darklist: lightgoldenrodyellow;
     --strikethrough: lightgrey;
+    --link: yellow;
 }
+
+/* .coffeeTheme {
+    --appFont: black;
+    --headerFont: black;
+    --background: white;
+    --lightList: lightyellow;
+    --darklist: lightgoldenrodyellow;
+    --strikethrough: lightgrey;
+}
+
+.pinkTheme {
+    --appFont: black;
+    --headerFont: black;
+    --background: white;
+    --lightList: lightyellow;
+    --darklist: lightgoldenrodyellow;
+    --strikethrough: lightgrey;
+}
+
+.darkTheme {
+    --appFont: ghostwhite;
+    --headerFont: ghostwhite;
+    --background: black;
+    --lightList: rgb(93, 92, 104);
+    --darklist: rgb(105, 104, 117);
+    --strikethrough: lightgrey;
+} */
 
 .github-corner.darkmode {
     display: none;
-}
-
-.github-corner.lightmode {
-    /* display: none; */  /* just in case I want to add darkmode :) */
 }
 
 * {
@@ -63,12 +87,37 @@
 
 html {
     font-family: 'Open Sans', sans-serif;
+}
+
+body {
     background: var(--background);
+    color: (var(--appFont))
 }
 
 main {
     max-width: 730px;
     margin: 0 auto;
+}
+
+footer span {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    background: var(--appFont);
+    color: var(--background);
+    border-top-right-radius: 15px;
+}
+
+footer a,
+footer a:visited,
+footer a:active {
+    color: var(--background);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--link);
 }
 
 form input {
@@ -89,7 +138,7 @@ input.text {
 }
 
 input.submit {
-    width: 40%;
+    width: auto;
     padding: 1em;
     border: none;
     background-color: var(--headerFont);
@@ -130,6 +179,7 @@ header li {
 .toDoList {
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 200px;
 }
 
 .toDoList li {
@@ -139,7 +189,8 @@ header li {
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
+    overflow-wrap: break-word;
 }
 
 
@@ -164,6 +215,50 @@ header li {
 
 .todoItem span {
     cursor: pointer;
+}
+
+/* scrollbar styles */
+/* html::-webkit-scrollbar {
+  width: 11px;
+}
+
+html {
+  scrollbar-width: 3em;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+html::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 20px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollhoverBG);
+} */
+
+/* Chris Coyier's article at css tricks: https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+.dont-break-out {
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
 }
 
 /* animations */
